@@ -4,7 +4,7 @@ Just click right-click on the LinkedIn contacts page and then choose inspect > c
 Then paste in this script.
 The loop is set to 4, since the first 4 in the list I did not wish to delete.
 
-<br/><br/>
+<br/>
 ```js
 function getDeletionTags() {
     const people = document.querySelectorAll('[data-view-name="connections-list"]');
