@@ -1,4 +1,4 @@
-#Script for Web Console, to delete LinkedIn contacts in mass.
+# Script for Web Console, to delete LinkedIn contacts in mass.
 
 Just click right-click on the LinkedIn contacts page and then choose inspect > console. (Or just press F12 / Ctrl + Shift + J)
 Then paste in this script.
