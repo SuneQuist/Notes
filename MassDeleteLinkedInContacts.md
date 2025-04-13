@@ -1,3 +1,4 @@
+**Script for Web Console, to delete LinkedIn contacts in mass.
 If you want to delete a large amount of contacts at once on your LinkedIn
 
 ```js
