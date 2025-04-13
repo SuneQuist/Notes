@@ -3,6 +3,9 @@
 Just click right-click on the LinkedIn contacts page and then choose inspect > console. (Or just press F12 / Ctrl + Shift + J)
 Then paste in this script.
 The loop is set to 4, since the first 4 in the list I did not wish to delete.
+
+Umm, if you do not wish LinkedIn to send you a stern email (I didn't get one), be sure to add a timeout in the
+for loop at the bottom.
 <br/>
 
 ```js
