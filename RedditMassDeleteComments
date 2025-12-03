@@ -16,7 +16,7 @@ function deleteRedditPost(postId) {
         operation: 'DeleteComment',
         variables: { 
             input: {
-                postId: postId
+                commentId: postId
             } 
         }
     };
@@ -31,8 +31,10 @@ function deleteRedditPost(postId) {
     } catch (err) { console.log(err); }
 }
 
-var smallTimeoutBetweenDeletes = 1000; // in milliseconds;
+var smallTimeoutBetweenDeletes = 2000; // in milliseconds;
+var excludePostIds = ['t1_nrq8kfo', 't1_nrjn81v', 't1_nrg3rao'];
 for (let i = 0; i < items.length; i++) {
     let postId = items[i].getAttribute('data-ks-id');
+    if ( !postId || excludePostIds.includes(postId)) { continue; }
     setTimeout(deleteRedditPost(postId), smallTimeoutBetweenDeletes);
 }
