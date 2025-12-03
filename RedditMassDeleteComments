@@ -1,0 +1,38 @@
+var items = document.querySelectorAll('a[data-ks-id]');
+items = Array.from(items);
+
+// Just found on stackoverflow, otherwise just write your own with a simple regex.
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+var csrf_token = getCookie('csrf_token');
+function deleteRedditPost(postId) {
+    let post_url = 'https://www.reddit.com/svc/shreddit/graphql';
+    var body = {
+        csrf_token: csrf_token,
+        operation: 'DeleteComment',
+        variables: { 
+            input: {
+                postId: postId
+            } 
+        }
+    };
+    
+    try {
+        fetch(post_url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+            credentials: "include"
+        });
+    } catch (err) { console.log(err); }
+}
+
+var smallTimeoutBetweenDeletes = 1000; // in milliseconds;
+for (let i = 0; i < items.length; i++) {
+    let postId = items[i].getAttribute('data-ks-id');
+    setTimeout(deleteRedditPost(postId), smallTimeoutBetweenDeletes);
+}
