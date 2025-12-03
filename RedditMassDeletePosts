@@ -31,8 +31,10 @@ function deleteRedditPost(postId) {
     } catch (err) { console.log(err); }
 }
 
-var smallTimeoutBetweenDeletes = 1000; // in milliseconds;
+var smallTimeoutBetweenDeletes = 2000; // in milliseconds;
+var excludePostIds = [];
 for (let i = 0; i < items.length; i++) {
     let postId = items[i].getAttribute('data-ks-id');
+    if ( !postId || excludePostIds.includes(postId)) { continue; }
     setTimeout(deleteRedditPost(postId), smallTimeoutBetweenDeletes);
 }
